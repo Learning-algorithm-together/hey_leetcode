@@ -16,7 +16,6 @@ func Choose(n int) (res int) {
 			res *= (n-i)
 		}
 	}
-
 	return
 }
 
