@@ -61,21 +61,23 @@ func maxArea(height []int) int {
 func maxArea(height []int) int {
 	// 最大值
 	max := 0.0
-
 	// 初始化j
 	for i, j := 0, (len(height) - 1); i < j;  {
+		fmt.Println("i = ", i, "; j = ", j)
 		var min int
 		if height[i] < height[j] {
-			min = height[i+1]
+			fmt.Println("height[i+1] = ", height[i+1])
+			min = height[i]
 			i++
 		}else {
-			min = height[j-1]
+			fmt.Println("height[j-1] = ", height[j-1])
+			min = height[j]
 			j--
 		}
 		area := (j - i +1)*min
+		fmt.Println("i = ", i, "j = ", j, "area = ",area)
 		max = math.Max(float64(max), float64(area))
 		fmt.Println("max = ",max)
 	}
-
 	return int(max)
 }
