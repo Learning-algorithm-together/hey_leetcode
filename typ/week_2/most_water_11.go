@@ -1,10 +1,5 @@
 package main
 
-import (
-	"fmt"
-	"math"
-)
-
 func main() {
 	sli := []int{1,8,6,2,5,4,8,3,7}
 	maxArea(sli)
@@ -57,27 +52,69 @@ func maxArea(height []int) int {
 	return int(max)
 }
 */
+/*
+func maxArea(height []int) int {
+	// 最大值
+	max := 0
+	// 初始化j
+	for i, j := 0, (len(height) - 1); i < j;  {
+		tmp := 0
+		if height[i] < height[j] {
+			tmp = (j - i)*height[i]
+			i++
+		}else {
+			tmp = (j - i)*height[j]
+			j--
+		}
+		if tmp > max {
+			max = tmp
+		}
+	}
+	return max
+}
+*/
 
 func maxArea(height []int) int {
 	// 最大值
-	max := 0.0
+	max := 0
+	i := 0
+	j := len(height) - 1
 	// 初始化j
-	for i, j := 0, (len(height) - 1); i < j;  {
-		fmt.Println("i = ", i, "; j = ", j)
-		var min int
+	for  i != j {
+		tmp := 0
 		if height[i] < height[j] {
-			fmt.Println("height[i+1] = ", height[i+1])
-			min = height[i]
+			tmp = (j - i)*height[i]
 			i++
 		}else {
-			fmt.Println("height[j-1] = ", height[j-1])
-			min = height[j]
+			tmp = (j - i)*height[j]
 			j--
 		}
-		area := (j - i +1)*min
-		fmt.Println("i = ", i, "j = ", j, "area = ",area)
-		max = math.Max(float64(max), float64(area))
-		fmt.Println("max = ",max)
+		if tmp > max {
+			max = tmp
+		}
 	}
-	return int(max)
+	return max
 }
+
+// 用时4ms的案例
+/*
+func maxArea(height []int) int {
+	head := 0
+	tail := len(height) - 1
+	max := 0
+	for head != tail {
+		tmp := 0
+		if height[head] < height[tail] {
+			tmp = (tail - head) * height[head]
+			head++
+		} else {
+			tmp = (tail - head) * height[tail]
+			tail--
+		}
+		if tmp > max {
+			max = tmp
+		}
+	}
+	return max
+}
+*/
