@@ -3,6 +3,7 @@ package main
 import "fmt"
 
 func main() {
+	climbStairs(20)
 	fmt.Println(climbStairs(20))
 }
 // 采用递归的思想
