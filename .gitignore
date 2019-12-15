@@ -4,7 +4,7 @@
 *.a
 *.so
 # Folders
-_test
+_test.go
 .DS_Store
 
 .idea
